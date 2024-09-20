@@ -1,0 +1,14 @@
+recipe_origins:
+  cci:
+    repo: https://github.com/conan-io/conan-center-index
+
+recipes_folder: cci-fork/recipes/
+
+recipe_linters:
+  - pattern: "*/conanfile.py"
+    commands:
+      - ruff format '{FILE}' --diff
+      - ruff check '{FILE}' --unsafe-fixes --output-format=concise --quiet
+  - pattern: "*/conandata.yml"
+    commands:
+      - true '{FILE}'

@@ -1,0 +1,50 @@
+[project]
+name = 'ccimt'
+version = '0.0'
+dependencies = [
+    'result',
+    'pyyaml >6, <7',
+    'pydantic >2, <3'
+]
+
+[project.scripts]
+ccimt_check_source_avail = 'ccimt.bin.check_source_avail:_main_script'
+ccimt_lint_recipes = 'ccimt.bin.lint_recipes:_main_script'
+
+[project.optional-dependencies]
+dev = [
+    'pre-commit',
+    'mypy',
+    'pytest',
+    'pytest-cov',
+    'ruff',
+    'types-pyyaml',
+]
+
+
+[tool.mypy]
+strict = true
+exclude = [
+    '^cci-fork/recipes/',
+]
+
+
+[tool.pytest.ini_options]
+# shorten pytest output and hide sourcecode excerpts
+addopts = '--tb=native'
+
+
+[tool.ruff]
+line-length = 100
+extend-exclude = [
+    './cci-fork/recipes/'
+]
+
+[tool.ruff.lint]
+select = [
+    'I', # isort
+    'F', # PyFlakes
+]
+
+[tool.ruff.format]
+quote-style = 'single'

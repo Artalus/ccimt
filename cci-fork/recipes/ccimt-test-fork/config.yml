@@ -1,0 +1,7 @@
+versions:
+  "0.0":
+    folder: all
+
+origin:
+  cci:
+    commit: ''
